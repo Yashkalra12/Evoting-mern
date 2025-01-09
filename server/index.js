@@ -19,7 +19,11 @@ const buildpath = path.join(__dirname, "../client/build");
 app.use(express.static(buildpath));
 
 // Enable CORS
-app.use(cors({ origin: '*' }));
+app.use(cors({
+  origin: 'https://evoting-mern-frontend.vercel.app', 
+  methods: ['GET', 'POST'], // Allow only GET and POST requests
+  credentials: true, // Allow credentials (cookies, authorization headers)
+}));
 
 // Middleware for parsing JSON bodies
 app.use(express.json());
