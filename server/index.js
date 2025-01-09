@@ -21,7 +21,7 @@ app.use(express.static(buildpath));
 // Enable CORS
 app.use(cors({
   origin: 'https://evoting-mern-frontend.vercel.app', 
-  methods: ['GET', 'POST'], // Allow only GET and POST requests
+  methods: ['GET', 'POST','PUT','DELETE'], // Allow only GET ,POST ,PUT and DELETE requests
   credentials: true, // Allow credentials (cookies, authorization headers)
 }));
 
