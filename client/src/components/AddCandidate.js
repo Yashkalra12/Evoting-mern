@@ -10,12 +10,18 @@ const AddCandidate = () => {
 
     const [candidate, setCandidate] = useState({ name: '', partyname: '', url: '' });
     const [winner, setWinner] = useState('');
+    const [error, setError] = useState(''); // To handle errors globally
 
     // Handle form submission
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
-        addCandidate(candidate.name, candidate.partyname, candidate.url);
-        setCandidate({ name: '', partyname: '', url: '' });
+        try {
+            await addCandidate(candidate.name, candidate.partyname, candidate.url);  // Assuming addCandidate is async
+            setCandidate({ name: '', partyname: '', url: '' });
+        } catch (err) {
+            setError('Error adding candidate');
+            console.error("Error adding candidate:", err);
+        }
     };
 
     // Handle input changes
@@ -33,6 +39,13 @@ const AddCandidate = () => {
                     "auth-token": sessionStorage.getItem('admin token eVoting')
                 }
             });
+
+            if (!response.ok) {  // Check if response status is not OK (i.e., not 200)
+                const errorMessage = await response.text();  // Read response as text
+                setWinner("Unauthorized or Error: " + errorMessage);
+                return;
+            }
+
             const json = await response.json();
             if (json.maxVotesCandidate) {
                 setWinner(json.maxVotesCandidate.partyname || "No Party Name");
@@ -41,7 +54,7 @@ const AddCandidate = () => {
             }
         } catch (error) {
             console.error("Error fetching winner:", error);
-            setWinner("Error");
+            setWinner("Error fetching winner");
         }
     };
 
@@ -55,6 +68,7 @@ const AddCandidate = () => {
     return (
         <div className="container my-3">
             <h2>Add Candidate</h2>
+            {error && <div className="alert alert-danger">{error}</div>}  {/* Display error messages */}
             <form className='mb-3'>
                 {/* Name input */}
                 <div className="mb-3 row">
@@ -123,6 +137,6 @@ const AddCandidate = () => {
             </div>
         </div>
     );
-}
+};
 
 export default AddCandidate;
