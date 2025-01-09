@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CandidateContext from './candidateContext'
 
 const CandidateState = (props) => {
-    const host = "https://evoting-mern-backend.vercel.app/" 
+    const host = "https://evoting-mern-backend.vercel.app" 
     const candidatesInitial = []
 
     const [candidates, setCandidates] = useState(candidatesInitial)

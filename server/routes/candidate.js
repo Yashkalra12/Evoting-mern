@@ -126,7 +126,7 @@ router.get('/maxVotesCandidate', fetchUser, async (req, res) => {
 })
 
 // ROUTE 6: Fetch all notes using: POST "api/candidates/fetchallnotes". Login required
-router.get('/fetchallcandidates', fetchUser, async (req, res) => {
+router.get('/https://evoting-mern-backend.vercel.app/', fetchUser, async (req, res) => {
     try {
         const candidates = await Candidate.find({})
         res.json(candidates)
