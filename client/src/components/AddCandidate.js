@@ -76,7 +76,7 @@ import candidateContext from '../context/candidates/candidateContext';
 import { useNavigate } from 'react-router-dom';
 
 const AddCandidate = () => {
-    const host = "https://evoting-mern-backend.vercel.app/";
+    const host = "https://evoting-mern-backend.vercel.app";
     const context = useContext(candidateContext);
     const { addCandidate } = context;
     const navigate = useNavigate();

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 const UserLogin = () => {
 
-    const host = "https://evoting-mern-backend.vercel.app/"
+    const host = "https://evoting-mern-backend.vercel.app"
     const navigate = useNavigate()
 
     const [credentials, setCredentials] = useState({ id: '', password: '' })
