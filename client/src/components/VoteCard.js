@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const VoteCard = (props) => {
 
     const { candidate } = props
-    const host = "http://localhost:5010" 
+    const host = "https://evoting-mern-backend.vercel.app/" 
     const navigate = useNavigate()
 
     const [token, setToken] = useState('');

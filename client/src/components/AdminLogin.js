@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminLogin = () => {
     const navigate = useNavigate();
-    const host = "http://localhost:5010";
+    const host = "https://evoting-mern-backend.vercel.app/";
     const [credentials, setCredentials] = useState({ id: '', password: '' });
 
     const handleSubmit = async (e) => {
